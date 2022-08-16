@@ -6,12 +6,42 @@ const FilmesApi = axios.create({
     baseURL: 'https://api.themoviedb.org/3/movie/550?api_key=52460cb453458e84f6b577c430c6eaf8'
 })
 
-export default class movies extends Component {
+class Movies extends Component {
+  state = {
+    movies:[]
+  }
+
+  componentDidMount() {
+    this.getMovies()
+  }
+
+
+  getMovies = async () => {
+    const resposta = await FilmesApi.get()
+
+    const AllFilmes = resposta.data.results.map((item)  => {
+      return {
+        nome:item.original_title,
+        sinopse:item.overview
+      }
+    })
+    this.setState({
+      movies:AllFilmes
+    })
+  }
+
   render() {
     return (
-        <div>
-            
-        </div>
-    )
+      <div>
+        {this.state.movies.map((item) => (
+          <ul>
+            <li>{item.nome}</li>
+            <li>{item.overview}</li>
+          </ul>
+        ))}
+      </div>
+    );
   }
 }
+
+export default Movies;
