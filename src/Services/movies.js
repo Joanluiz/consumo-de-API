@@ -15,10 +15,9 @@ componentDidMount(){
     this.getMovies()
 }
 
-
 getMovies = async () => {
   const resposta = await FilmesApi.get();
-  console.log(resposta)
+
   const AllFilmes = resposta.data.results.map((item) => {
     return {
       ...item,
@@ -28,7 +27,7 @@ getMovies = async () => {
 
   this.setState({
     movies: AllFilmes
-  }); console.log(this.state.movies)
+  });
 }
 
   render() {
@@ -37,6 +36,7 @@ getMovies = async () => {
             {this.state.movies.map((item) => (
             <ul>
               <li>{item.nome}</li>
+              <li>{item.overview}</li>
             </ul>
             ))}
         </div>
