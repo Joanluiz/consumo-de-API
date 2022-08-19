@@ -1,36 +1,33 @@
-import React, { Component } from "react";
-import { BrowserRouter, Link, Route, Routes } from "react-router-dom";
-import Movies from './Services/movies';
-import Series from "../Services/Series";
-import Home from "../Services/Home";
-
-
+import React, { Component } from 'react';
+import Home from '../Services/Home'
+import Movies from '../Services/movies';
+import {BrowserRouter ,Link, Route, Routes} from 'react-router-dom'
 
 class Header extends Component {
     render() {
         return (
             <BrowserRouter>
-                <h1>Let's Movies</h1>
+                <h1 className='fundo'>CloneFlix</h1>
                 <nav>
                     <ul>
                         <li>
-                            <link to='/'>Home</link>
+                            <Link to='/'>Home</Link>
                         </li>
                         <li>
-                            <link to='/movies'>Movies</link>
+                            <Link to='/movies'>Movies</Link>
                         </li>
                         <li>
-                            <link to='/Series'>Series</link>
+                            <Link to='/series'>Series</Link>
                         </li>
-                        
                     </ul>
                 </nav>
                 <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/movies" element={<Movies />} />
-                    <Route path="/Series" element={<Series />} />
+                    <Route path='/' element={<Home />}/>
+                    <Route path='/movies' element={<Movies />}/>
                 </Routes>
             </BrowserRouter>
-        )
+        );
     }
 }
+
+export default Header;
