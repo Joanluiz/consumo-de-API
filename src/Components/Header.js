@@ -7,7 +7,7 @@ class Header extends Component {
     render() {
         return (
             <BrowserRouter>
-                <h1 className='fundo'>CloneFlix</h1>
+                <h1>CloneFlix</h1>
                 <nav>
                     <ul>
                         <li>

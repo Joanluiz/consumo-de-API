@@ -10,6 +10,7 @@ console.log(FilmesApi)
 export default class Movies extends Component {
     state = {
         movies: []
+        FilterMovies:[]
     }
 
     componentDidMount() {
@@ -27,13 +28,29 @@ export default class Movies extends Component {
 
         })
         this.setState({
-            movies: allFilmes
+            movies: allFilmes,
+            FilterMovies:allFilmes
+        })
+    }
+
+    handleChenge = (event) => {
+        const ListaFiltrada = this.state.movies.filter((item) => {
+            if (item.original_title.toLowerCase().includes(event.target.value.toLowerCase())) {
+                return true
+            } else {
+                return ""
+            }
+        })
+        this.setState({
+            FilterMovies:ListaFiltrada
         })
     }
 
     render() {
         return (
             <>
+                <input onChange={this.handleChenge} />
+                
                 {this.state.movies.map((item, index) => (
                     <div key={index}>
                         <ul >
